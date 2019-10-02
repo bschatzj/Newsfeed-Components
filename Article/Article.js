@@ -85,6 +85,17 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'DINKLAGE!!!!!',
+    date: 'Jan 23rd, 1997',
+    firstParagraph: `Peter Hayden Dinklage (/ˈdɪŋklɪdʒ/; born June 11, 1969) is an American actor and producer. Dinklage studied acting at Bennington College, starring in a number of amateur stage productions. His film debut was in Living in Oblivion (1995) and his breakthrough came with the comedy-drama The Station Agent (2003). He has since appeared in Elf (2003), Find Me Guilty (2006), Underdog (2007), Death at a Funeral (2007), Penelope (2008), The Chronicles of Narnia: Prince Caspian (2008), X-Men: Days of Future Past (2014), Pixels (2015), and Three Billboards Outside Ebbing, Missouri (2017) `,
+
+    secondParagraph: `BUM BUM BUDDA BUM BUMMMMMMMM BUDDA  BUMM BUMM DAAAAAAAA DAAAAAAA DADA DAAAAAAAA DAAAAAAAAA DAADADADAA DADADAA DRAGGGGGGGOOOONNNNNNNNS THERE ARE DRAAAAAAGOOOOONNNNNNS GAME OF THRONES THRONES THRONES THRONES THRONES THRONES.... SING ALONG TO THE THEME MUSIC OF GOT ITS GREAT... `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
 
@@ -112,3 +123,59 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+article = document.getElementById('articles');
+console.log(article)
+
+data.forEach(data => {
+  article.appendChild(newPannel(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph))
+})
+
+
+
+function newPannel(title, date, firstP, secondP, thirdP) {
+  // define new elements
+  const article = document.createElement('div');
+  const header = document.createElement('h2');
+  const dates = document.createElement ('p');
+  const paragraphOne = document.createElement('p');
+  const paragraphTwo = document.createElement('p');
+  const paragraphThree = document.createElement('p');
+  const expandBtn = document.createElement('button');
+
+  article.classList.add("article");
+  dates.classList.add("date");
+  expandBtn.classList.add('expandButton');
+  
+  
+  
+  article.appendChild(header);
+  article.appendChild(paragraphOne);
+  article.appendChild(paragraphTwo);
+  article.appendChild(paragraphThree);
+  article.appendChild(expandBtn);
+
+  header.textContent = title;
+  dates.textContent = date;
+  paragraphOne.textContent = firstP;
+  paragraphTwo.textContent = secondP;
+  paragraphThree.textContent = thirdP;
+  expandBtn.textContent = "Click Me";
+
+
+
+
+
+  // panelContent.textContent = content
+  // panelTitle.textContent = title
+
+
+  // const open = article.style.article-open
+
+  expandBtn.addEventListener('click', event => {
+    console.log('button clicked', event.target)
+    article.classList.toggle("article-open");
+  })
+
+
+return article
+}
